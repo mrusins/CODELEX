@@ -1,5 +1,5 @@
 <?php
-$arr = [1,2,3];
+$integers = [1,2,3];
 $person = [
     "name" => "John",
     "surname" => "Doe",
@@ -29,7 +29,7 @@ $items = [
 
 //exercise 1
 
-echo array_sum($arr) ;
+echo array_sum($integers) ;
 echo "\n";
 
 //exercise 2
