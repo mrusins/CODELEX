@@ -26,13 +26,15 @@ $list = [
         'price' => 65
     ],
 ];
-function getProductName(array $list):void{
-    for($i = 0; $i<count($list);$i++){
-        echo $list[$i]['name'].":".$i."\n";
+function getProductName(array $list): void
+{
+    for ($i = 0; $i < count($list); $i++) {
+        echo $list[$i]['name'] . ":" . $i . "\n";
     }
 }
+
 echo "\n\n";
-$productNr = readline(getProductName($list). "\nEnter a product Nr: ");
+$productNr = readline(getProductName($list) . "\nEnter a product Nr: ");
 if ($productNr >= count($list)) {
     die("Wrong ID, try again \n");
 }
