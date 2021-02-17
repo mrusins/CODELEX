@@ -20,25 +20,25 @@ if ($x === $y) {
 
 //exercise 2
 
-if ($x >= 1 && $x <= 100){
+if ($x >= 1 && $x <= 100) {
     echo "yes, $x is between 1 and 100 \n";
 };
 
 //exercise 3
 
-if ($str == 'hello'){
+if ($str == 'hello') {
     echo "world \n";
 };
 
 //exercise 4
 
-if ($x > 0 && $x < 100 && 100 / $x == 10){
+if ($x > 0 && $x < 100 && 100 / $x == 10) {
     echo "yes, number is 10 \n";
 };
 
 //exercise 5
 
-if ($x > $y && $x < $z){
+if ($x > $y && $x < $z) {
     echo "correct \n";
 }
 
@@ -55,13 +55,13 @@ switch ($plateNumber) {
 //exercise 7
 
 switch ($number) {
-    case $number <=50:
+    case $number <= 50:
         echo "low \n";
         break;
     case $number > 50 && $number < 100:
         echo "medium \n";
         break;
-    case $number >=100:
+    case $number >= 100:
         echo "high \n";
         break;
     default:

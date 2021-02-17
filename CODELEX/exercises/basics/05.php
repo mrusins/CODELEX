@@ -4,7 +4,7 @@ echo "Exercise 1 \n";
 //Create a function that accepts any string and returns the same value with added "codelex"
 // by the end of it. Print this value out.
 
-function addCodelex(string $str):string
+function addCodelex(string $str): string
 {
     return $str . " CODELEX \n";
 }
@@ -17,7 +17,7 @@ echo "Exercise 2 \n";
 // First argument is a base value and the second one is a value its been multiplied by.
 // For example, given argument 10 and 5 prints out 50
 
-function multiple(int $x,int $y):string
+function multiple(int $x, int $y): string
 {
     return $x * $y . "\n";
 }
@@ -33,7 +33,7 @@ $personToCheck = new stdClass();
 $personToCheck->name = 'Greta';
 $personToCheck->surname = 'Thunberg';
 $personToCheck->age = 17;
-function checkIfOld(int $x,string $y,string $z):string
+function checkIfOld(int $x, string $y, string $z): string
 {
     if ($x >= 18) {
         return $y . ' ' . $z . ", grab few beers, girl \n";
