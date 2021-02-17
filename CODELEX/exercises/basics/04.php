@@ -46,4 +46,3 @@ for ($x = 0; $x < count($superHumans->name); $x++) {
     echo 'My name is ' . $superHumans->name[$x] . ' ' . $superHumans->surname[$x] . '. I am '
         . $superHumans->age[$x] . ' and my birthday is ' . $superHumans->bd[$x] . ".\n";
 }
-//test
