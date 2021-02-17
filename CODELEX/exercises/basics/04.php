@@ -1,15 +1,15 @@
 <?php
 //exercise 1
 
-$arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-foreach ($arr as $num) {
+$integers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+foreach ($integers as $num) {
     echo "$num" . "\n";
 };
 
 //exercise 2
 
-for ($x = 0; $x < count($arr); $x++) {
-    echo $arr[$x] . " ";
+for ($x = 0; $x < count($integers); $x++) {
+    echo $integers[$x] . " ";
 }
 echo "\n";
 //exercise 3
@@ -22,9 +22,9 @@ while ($x <= 10) {
 
 //exercise 3
 
-for ($x = 0; $x < count($arr); $x++) {
-    if ($arr[$x] % 3 === 0) {
-        echo $arr[$x];
+for ($x = 0; $x < count($integers); $x++) {
+    if ($integers[$x] % 3 === 0) {
+        echo $integers[$x];
     }
 }
 echo "\n";
