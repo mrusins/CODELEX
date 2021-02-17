@@ -4,10 +4,12 @@ echo "Exercise 1 \n";
 //Create a function that accepts any string and returns the same value with added "codelex"
 // by the end of it. Print this value out.
 
-function addCodelex($str){
-    echo $str . " CODELEX \n";
+function addCodelex(string $str):string
+{
+    return $str . " CODELEX \n";
 }
-addCodelex('I am learning to code in');
+
+echo addCodelex('I am learning to code in');
 
 echo "Exercise 2 \n";
 
@@ -15,10 +17,12 @@ echo "Exercise 2 \n";
 // First argument is a base value and the second one is a value its been multiplied by.
 // For example, given argument 10 and 5 prints out 50
 
-function multiple($x , $y){
-    echo $x * $y . "\n";
+function multiple(int $x,int $y):string
+{
+    return $x * $y . "\n";
 }
-multiple(5,10);
+
+echo multiple(5, 10);
 
 echo "Exercise 3 \n";
 
@@ -26,17 +30,18 @@ echo "Exercise 3 \n";
 // Create a function that will determine if the person has reached 18 years of age.
 // Print out if the person has reached age of 18 or not.
 $personToCheck = new stdClass();
-$personToCheck -> name = 'Greta';
-$personToCheck -> surname = 'Thunberg';
-$personToCheck -> age = 17;
-function checkIfOld($x, $y, $z){
-    if($x >=18 ){
-    echo $y. ' '. $z . ", grab few beers, girl \n";
-    } else {
-        echo $y. ' '. $z .  ", go back and save planet Earth \n";
+$personToCheck->name = 'Greta';
+$personToCheck->surname = 'Thunberg';
+$personToCheck->age = 17;
+function checkIfOld(int $x,string $y,string $z):string
+{
+    if ($x >= 18) {
+        return $y . ' ' . $z . ", grab few beers, girl \n";
     }
+    return $y . ' ' . $z . ", go back and save planet Earth \n";
 }
-checkIfOld($personToCheck ->age, $personToCheck ->name, $personToCheck ->surname);
+
+checkIfOld($personToCheck->age, $personToCheck->name, $personToCheck->surname);
 
 echo "Exercise 4 \n";
 
@@ -56,14 +61,16 @@ $person2->name = 'David';
 $person2->surname = 'Hasselhoff';
 $person2->age = 100;
 
-function checkAge($per){
-    for ($x = 0; $x<count($per); $x++){
-        if($per[$x] -> age >=18){
-            echo $per[$x] -> name . ", grab your beer \n";
+function checkAge(array $per): string
+{
+    for ($x = 0; $x < count($per); $x++) {
+        if ($per[$x]->age >= 18) {
+            return $per[$x]->name . ", grab your beer \n";
         }
     }
 }
-checkAge($persons);
+
+echo checkAge($persons);
 
 echo "Exercise 5 \n";
 
@@ -88,10 +95,10 @@ $shippingCosts = [
     'highWeight' => 2
 ];
 foreach ($itemsInBasket as $x) {
-    if( $x['weight'] <=9){
-        echo $x['name']. ' shipping costs will be ' .$shippingCosts['lowWeight']."EUR\n";
+    if ($x['weight'] <= 9) {
+        echo $x['name'] . ' shipping costs will be ' . $shippingCosts['lowWeight'] . "EUR\n";
     } else {
-        echo $x['name']. ' shipping costs will be ' .$shippingCosts['highWeight']."EUR\n";
+        echo $x['name'] . ' shipping costs will be ' . $shippingCosts['highWeight'] . "EUR\n";
     }
 }
 
@@ -102,20 +109,22 @@ echo "Exercise 6 \n";
 //function that determines count of elements in the array. Create a function that doubles the integer number.
 // Within the loop using php in-built function print out the double of the number value (using your custom function).
 
-$arrForExe6 = [2,3,4,5.6,'hello'];
+$arrForExe6 = [2, 3, 4, 5.6, 'hello'];
 
 
-function double($arr){
-    for ($x = 0; $x < count($arr); $x++) {
-        if (is_integer($arr[$x])) {
-            echo 'integer from array in double = '. $arr[$x] * 2 . "\n";
+function double($elements)
+{
+    for ($x = 0; $x < count($elements); $x++) {
+        if (is_integer($elements[$x])) {
+            echo 'integer from array in double = ' . $elements[$x] * 2 . "\n";
         }
     }
-    for ($x = 0; $x < count($arr); $x++) {
-        if (is_numeric($arr[$x])) {
-            echo 'number from array in double = '. $arr[$x] * 2 . "\n";
+    for ($x = 0; $x < count($elements); $x++) {
+        if (is_numeric($elements[$x])) {
+            echo 'number from array in double = ' . $elements[$x] * 2 . "\n";
         }
     }
 
 }
+
 double($arrForExe6);
