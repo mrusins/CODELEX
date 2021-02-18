@@ -12,8 +12,6 @@ for ($i = 0; $i < count($animals) - 1; $i++) {
         echo 'sheep, ';
     }
 
-
-
 }
-
+echo end($animals);
 
