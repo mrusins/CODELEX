@@ -5,12 +5,13 @@ $animals = ['sheep', 'sheep', 'sheep', 'wolf', 'sheep', 'sheep', 'sheep', 'wolf'
 for ($i = 0; $i < count($animals) - 1; $i++) {
 
     if ($animals[$i + 1] === 'wolf') {
-        echo "OMG,";
+        echo "OMG, ";
     } else if ($animals[$i] === 'wolf') {
-        echo 'HEHE,';
+        echo 'HEHE, ';
     } else {
         echo 'sheep, ';
     }
+
 
 
 }
