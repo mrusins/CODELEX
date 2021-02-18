@@ -13,5 +13,12 @@ for ($i = 0; $i < count($animals) - 1; $i++) {
     }
 
 }
-echo end($animals);
+
+if (end($animals) == 'wolf') {
+    echo 'HEHE,';
+} else if (end($animals) == 'sheep') {
+    echo 'sheep ';
+}
+
+
 
