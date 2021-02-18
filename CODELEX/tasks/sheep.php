@@ -2,9 +2,9 @@
 
 $animals = ['sheep', 'sheep', 'sheep', 'wolf', 'sheep', 'sheep', 'sheep', 'wolf', 'sheep',];
 
-for ($i = 0; $i < count($animals) - 1; $i++) {
+for ($i = 0; $i < count($animals); $i++) {
 
-    if ($animals[$i + 1] === 'wolf') {
+    if (isset($animals[$i + 1]) && $animals[$i + 1] === 'wolf' || isset($animals[$i - 1]) && $animals[$i - 1] === 'wolf') {
         echo "OMG, ";
     } else if ($animals[$i] === 'wolf') {
         echo 'HEHE, ';
@@ -14,11 +14,7 @@ for ($i = 0; $i < count($animals) - 1; $i++) {
 
 }
 
-if (end($animals) == 'wolf') {
-    echo 'HEHE,';
-} else if (end($animals) == 'sheep') {
-    echo 'sheep ';
-}
+
 
 
 
