@@ -34,7 +34,7 @@ function getProductName(array $list): void
 }
 
 PHP_EOL;
-$productNr = readline(getProductName($list) . "\nEnter a product Nr: ");
+$productNr = readline(getProductName($list) . PHP_EOL . "Enter a product Nr: ");
 if ($productNr >= count($list)) {
     die("Wrong ID, try again" . PHP_EOL);
 }
