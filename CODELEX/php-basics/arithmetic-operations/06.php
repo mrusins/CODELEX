@@ -2,7 +2,7 @@
 
 $max = 110;
 
-$stack = array();
+$stack = [];
 for ($i = 0; $i < $max; $i++) {
     if ($i % 3 == 0 && $i % 5 == 0) {
         $stack[] = "CozaLoza";
@@ -14,6 +14,8 @@ for ($i = 0; $i < $max; $i++) {
         $stack[] = $i;
     }
 }
+
+
 for ($j = 0; $j < count($stack); $j++) {
 
 
