@@ -47,13 +47,11 @@ function checkMisses($letter, $word)
 }
 
 do {
-
     $letter = readline("Enter:");
     checkMisses($letter, $chosedWord);
     system('clear');
     checkForLettersInWord($chosedWord, $letter, $table);
     echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL . 'Word: ' .  implode(" ", $table) . PHP_EOL;
     echo 'misses: ' . implode(" ", $misses) . PHP_EOL;
-
 } while ($table != $chosedWord);
 echo "BINGO!" . PHP_EOL;
