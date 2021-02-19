@@ -1,8 +1,11 @@
 <?php
 
 $max = 110;
-
+$brIndex = [];
 $stack = [];
+for ($j = 0; $j < 11; $j++){
+    array_push($brIndex, $max/10*$j);
+}
 for ($i = 0; $i < $max; $i++) {
     if ($i % 3 == 0 && $i % 5 == 0) {
         $stack[] = "CozaLoza";
@@ -17,12 +20,9 @@ for ($i = 0; $i < $max; $i++) {
 
 
 for ($j = 0; $j < count($stack); $j++) {
-
-
-    if ($j == 11 || $j == 22 || $j == 33 || $j == 44 || $j == 55 || $j == 66 || $j == 77 || $j == 88 || $j == 99 || $j == 110) {
+    if (array_search($j, $brIndex) !== false) {
         echo $stack[$j] . PHP_EOL;
     } else {
         echo $stack[$j] . " ";
     }
-
 }
