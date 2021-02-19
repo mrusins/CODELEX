@@ -12,9 +12,8 @@ function drawTable($table)
     }
 }
 $thereIsWinner = 0;
-function isThereWinner($table)
+function isThereWinner(&$thereIsWinner, $table)
 {
-    global $thereIsWinner;
     for ($i = 0; $i <= 2; $i++) {
         if (count(array_unique($table[$i])) === 1) {
             $thereIsWinner = 1;
@@ -33,13 +32,13 @@ do {
     $table[$moveX1 - 1][$moveY1 - 1] = "0";
     system('clear');
     drawTable($table);
-    isThereWinner($table);
+    isThereWinner($thereIsWinner, $table);
     $moveX2 = readline("$player2Message");
     $moveY2 = readline("$player2Message");
     $table[$moveX2 - 1][$moveY2 - 1] = "X";
     system('clear');
     drawTable($table);
-    isThereWinner($table);
+    isThereWinner($thereIsWinner,$table);
 
 } while ($thereIsWinner != 1);
 
