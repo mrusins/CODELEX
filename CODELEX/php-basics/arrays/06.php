@@ -1,6 +1,6 @@
 <?php
 system('clear');
-$allWords = ['cat', 'dog', 'mouse', 'psihofazatron', 'trololo'];
+$allWords = ['cat', 'dog', 'mouse', 'psihofazatron', 'greta'];
 $random = rand(0, 3);
 $chosedWord = [];
 $table = [];
