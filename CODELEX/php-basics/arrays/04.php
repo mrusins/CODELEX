@@ -2,11 +2,10 @@
 
 
 $array2 = [];
+$array = [];
 
-function generateArrays(int $arrayLenght): array
+function generateArrays(&$array, &$array2, $arrayLenght)
 {
-    $array = [];
-    global $array2;
     for ($i = 0; $i < $arrayLenght; $i++) {
         $random = rand(1, 100);
         array_push($array, $random);
@@ -15,8 +14,9 @@ function generateArrays(int $arrayLenght): array
 
     return $array;
 }
+generateArrays($array, $array2,10);
+echo 'Array1: ' . implode(" ", $array) . PHP_EOL;
 
-echo 'Array1: ' . implode(" ", generateArrays(10)) . PHP_EOL;
 
 
 function changeLast($array2): array
@@ -25,5 +25,6 @@ function changeLast($array2): array
     array_push($array2, -7);
     return $array2;
 }
+changeLast($array2);
 
 echo 'Array2: ' . implode(" ", changeLast($array2)) . PHP_EOL;
