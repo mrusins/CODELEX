@@ -1,4 +1,5 @@
 <?php
+system('clear');
 $allWords = ['cat', 'dog', 'mouse', 'psihofazatron', 'trololo'];
 $random = rand(0, 3);
 $chosedWord = [];
@@ -25,7 +26,7 @@ function drawTable($word)
 }
 
 drawTable($chosedWord);
-echo implode(" ", $table) . PHP_EOL;
+echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL . 'Word: ' .   implode(" ", $table) . PHP_EOL;
 
 function checkForLettersInWord($word, $letter, $table)
 {
@@ -51,8 +52,8 @@ do {
     checkMisses($letter, $chosedWord);
     system('clear');
     checkForLettersInWord($chosedWord, $letter, $table);
-    echo implode(" ", $table) . PHP_EOL;
-    echo 'misses:' . implode(" ", $misses) . PHP_EOL;
+    echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL . 'Word: ' .  implode(" ", $table) . PHP_EOL;
+    echo 'misses: ' . implode(" ", $misses) . PHP_EOL;
 
 } while ($table != $chosedWord);
 echo "BINGO!" . PHP_EOL;
