@@ -1,5 +1,5 @@
 <?php
-system('clear');
+//system('clear');
 $allWords = ['cat', 'dog', 'mouse', 'psihofazatron', 'greta'];
 $random = rand(0, 3);
 $chosedWord = [];
@@ -55,7 +55,7 @@ function checkMisses($letter, $word, $misses)
 do {
     $letter = readline("Enter:");
     $misses = checkMisses($letter, $chosedWord, $misses);
-    system('clear');
+//    system('clear');
     $table = checkForLettersInWord($chosedWord, $letter, $table);
     echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL . 'Word: ' . implode(" ", $table) . PHP_EOL;
     echo 'misses: ' . implode(" ", $misses) . PHP_EOL;
