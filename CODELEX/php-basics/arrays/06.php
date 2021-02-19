@@ -6,7 +6,7 @@ $chosedWord = [];
 $table = [];
 $misses = [];
 
-function chooseWord($allWords, $random, $chosedWord)
+function chooseWord(array $allWords, int $random, array $chosedWord):array
 {
     $tempArray = [];
     for ($i = 0; $i < strlen($allWords[$random]); $i++) {
