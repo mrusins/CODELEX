@@ -5,53 +5,59 @@ $random = rand(0, 3);
 $chosedWord = [];
 $table = [];
 $misses = [];
-function chooseWord($allWords, $random)
+
+function chooseWord($allWords, $random, $chosedWord)
 {
-    global $chosedWord;
+    $tempArray = [];
     for ($i = 0; $i < strlen($allWords[$random]); $i++) {
-        array_push($chosedWord, $allWords[$random][$i]);
-
+        array_push($tempArray, $allWords[$random][$i]);
     }
+    $chosedWord = $tempArray;
+    return $chosedWord;
 }
+$chosedWord = chooseWord($allWords, $random, $chosedWord);
 
-chooseWord($allWords, $random);
-
-function drawTable($word)
+function drawTable($word, $table)
 {
-    global $table;
+    $tempArray = [];
     for ($i = 0; $i < count($word); $i++) {
-        array_push($table, "-");
+        array_push($tempArray, "-");
     }
+    $table = $tempArray;
     return $table;
 }
 
-drawTable($chosedWord);
-echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL . 'Word: ' .   implode(" ", $table) . PHP_EOL;
+$table = drawTable($chosedWord, $table);
+echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL . 'Word: ' . implode(" ", $table) . PHP_EOL . "misses: " . PHP_EOL;
 
-function checkForLettersInWord($word, $letter, $table)
+function checkForLettersInWord($chosedWord, $letter, $table)
 {
-    global $table;
-    for ($i = 0; $i < count($word); $i++) {
-        if ($word[$i] === $letter) {
-            $table[$i] = $letter;
+    $tempArray = $table;
+    for ($i = 0; $i < count($chosedWord); $i++) {
+        if ($chosedWord[$i] === $letter) {
+            $tempArray[$i] = $letter;
         }
     }
+    $table = $tempArray;
+    return $table;
 }
 
-function checkMisses($letter, $word)
+function checkMisses($letter, $word, $misses)
 {
-    global $misses;
+    $localArray = $misses;
     if (array_search($letter, $word) === false) {
-        array_push($misses, $letter);
+        array_push($localArray, $letter);
     }
+    $misses = $localArray;
+    return $misses;
 }
 
 do {
     $letter = readline("Enter:");
-    checkMisses($letter, $chosedWord);
+    $misses = checkMisses($letter, $chosedWord, $misses);
     system('clear');
-    checkForLettersInWord($chosedWord, $letter, $table);
-    echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL . 'Word: ' .  implode(" ", $table) . PHP_EOL;
+    $table = checkForLettersInWord($chosedWord, $letter, $table);
+    echo '-=-=-=-=-=-=-=-=-=-=-=-=-=-' . PHP_EOL . 'Word: ' . implode(" ", $table) . PHP_EOL;
     echo 'misses: ' . implode(" ", $misses) . PHP_EOL;
 } while ($table != $chosedWord);
 echo "BINGO!" . PHP_EOL;
