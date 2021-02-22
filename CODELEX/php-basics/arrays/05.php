@@ -3,6 +3,8 @@
 //TODO: add diagonal winner
 //TODO: must check move only in empty place
 
+print("\033[2J\033[;H");
+
 $table = [['-', ' ', '-'], [' ', '-', ' '], ['-', ' ', '-']];
 
 function drawTable($table)
@@ -30,13 +32,13 @@ do {
     $moveX1 = readline("$player1Message");
     $moveY1 = readline("$player1Message");
     $table[$moveX1 - 1][$moveY1 - 1] = "0";
-//    system('clear');
+    print("\033[2J\033[;H");
     drawTable($table);
     isThereWinner($thereIsWinner, $table);
     $moveX2 = readline("$player2Message");
     $moveY2 = readline("$player2Message");
     $table[$moveX2 - 1][$moveY2 - 1] = "X";
-//    system('clear');
+    print("\033[2J\033[;H");
     drawTable($table);
     isThereWinner($thereIsWinner,$table);
 
