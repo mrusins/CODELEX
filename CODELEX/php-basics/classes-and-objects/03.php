@@ -3,21 +3,23 @@
 class FuelGauge
 {
     public $current;
-    function __construct( int $current)
+
+    function __construct(int $current)
     {
         $this->current = $current;
     }
 
-    function currentFuealAmount()
+    function currentFuealAmount(): string
     {
         return 'Current fuel amount: ' . $this->current . PHP_EOL;
     }
 
-    function decreaseFuelAmount ($milage){
-        $this->current -= $milage/10;
+    function decreaseFuelAmount(int $milage): void
+    {
+        $this->current -= $milage / 10;
     }
 
-    function puttingFuel($newCurrent)
+    function puttingFuel(int $newCurrent): void
     {
         $this->current += $newCurrent;
         if ($this->current > 70) {
@@ -30,22 +32,28 @@ class FuelGauge
 class Odometer
 {
     public $current;
-    function __construct( int $current){
+
+    function __construct(int $current)
+    {
 
         $this->current = $current;
     }
-    function currentOdometer(){
+
+    function currentOdometer(): string
+    {
         return 'Current odometer: ' . $this->current . PHP_EOL;
     }
 
-    function driveOdometer($lasDrive){
-        $this->current += $lasDrive;
-        if ($this->current > 999999){
-            $this->current = ($lasDrive - (999999 - $this->current))/2-1;
+    function driveOdometer(int $lastDrive): void
+    {
+        $this->current += $lastDrive;
+        if ($this->current > 999999) {
+            $this->current = ($lastDrive - (999999 - $this->current)) / 2 - 1;
         }
     }
 }
-$car = new FuelGauge( 0);
+
+$car = new FuelGauge(0);
 $car2 = new Odometer(999999);
 print("\033[2J\033[;H");
 echo $car->currentFuealAmount();
@@ -53,16 +61,16 @@ echo $car->currentFuealAmount();
 $addFuel = readline('Enter fuel in liters: ');
 $car->puttingFuel($addFuel);
 
-do{
+do {
     echo $car->currentFuealAmount();
     echo $car2->currentOdometer();
     $addMilage = readline('Enter milage: ');
     $i = $addMilage;
     $car->puttingFuel(0);
     $car2->driveOdometer($addMilage);
-    $car ->decreaseFuelAmount($addMilage);
+    $car->decreaseFuelAmount($addMilage);
     echo PHP_EOL . PHP_EOL . PHP_EOL;
-} while( $i > 0);
+} while ($i > 0);
 
 
 
