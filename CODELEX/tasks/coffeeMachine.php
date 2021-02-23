@@ -1,13 +1,11 @@
 <?php
 print("\033[2J\033[;H");
-$test = 0;
-//TODO: choose wallet
 $wallet = [1 => 10, 2 => 10, 10 => 10, 20 => 10, 50 => 10, 100 => 10, 200 => 10];
-//$wallet = [1 => 10, 2 => 10];
 $onlyNominals = [];
 $priceOfChoosedDrink = 0;
 $sumOfInsertedCoins = 0;
 $totalinWallet = 0;
+$arrayOfChange = [];
 $menu = ['Coffee' => 200, 'Tea' => 120, 'Hot Water' => 60];
 
 function countTotal(array $wallet, array &$onlyNominals, int &$totalinWallet): int
@@ -20,6 +18,7 @@ function countTotal(array $wallet, array &$onlyNominals, int &$totalinWallet): i
     $totalinWallet = $sum;
     return $sum;
 }
+
 countTotal($wallet, $onlyNominals, $totalinWallet);
 
 function isMoneyEnought(array $menu, int $totalinWallet): void
@@ -31,6 +30,7 @@ function isMoneyEnought(array $menu, int $totalinWallet): void
     }
 
 }
+
 isMoneyEnought($menu, $totalinWallet);
 
 function walletInventorization(array $wallet): void
@@ -103,6 +103,26 @@ function insertCoins(array &$wallet, int &$sumOfInsertedCoins, int $incertedCoin
     }
 }
 
+function receiveChange(array $onlyNominals, int $change)
+{
+    $arrayOfChange = [];
+    while ($change > 0) {
+        for ($i = 0; $i < count($onlyNominals); $i++) {
+            if (isset($onlyNominals[$i - 1]) && $onlyNominals[$i - 1] <= $change && $onlyNominals[$i] >= $change) {
+                array_push($arrayOfChange, $onlyNominals[$i - 1]);
+                $change = $change - $onlyNominals[$i - 1];
+            } elseif ($change >= $onlyNominals[6]) {
+                array_push($arrayOfChange, $onlyNominals[6]);
+                $change = $change - $onlyNominals[6];
+            }
+        }
+    }
+    var_dump($change);
+    echo 'Take your change: ' . implode(', ', $arrayOfChange);
+
+
+}
+
 do {
     print("\033[2J\033[;H");
     echo 'In your wallet is ' . 'EUR ' . countTotal($wallet, $onlyNominals, $totalinWallet) / 100 . PHP_EOL . 'Total of inserted: EUR ' . ($sumOfInsertedCoins / 100) . PHP_EOL;
@@ -118,5 +138,19 @@ $change = $sumOfInsertedCoins - $priceOfChoosedDrink;
 
 echo 'Enjoy your drink' . PHP_EOL . 'Your change is: EUR ' . ($change / 100) . PHP_EOL .
     'You still have EUR ' . (countTotal($wallet, $onlyNominals, $totalinWallet) + $change) / 100 . PHP_EOL;
+
+
+while ($change > 0) {
+    for ($i = 0; $i < count($onlyNominals); $i++) {
+        if (isset($onlyNominals[$i - 1]) && $onlyNominals[$i - 1] <= $change && $onlyNominals[$i] >= $change) {
+            array_push($arrayOfChange, $onlyNominals[$i - 1]);
+            $change = $change - $onlyNominals[$i - 1];
+        } elseif ($change >= $onlyNominals[6]) {
+            array_push($arrayOfChange, $onlyNominals[6]);
+            $change = $change - $onlyNominals[6];
+        }
+    }
+}
+echo 'Take your change: ' . implode(' || ', $arrayOfChange) . PHP_EOL;
 
 
