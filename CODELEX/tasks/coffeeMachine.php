@@ -42,13 +42,13 @@ function walletInventorization(array $wallet): void
     }
 }
 
-function printMenu(array $menu, int &$priceOfChoosedDrink): void
-{
-    $index = 0;
-    foreach ($menu as $key => $value) {
-        $index++;
-        echo "[$index] " . $key . " EUR " . $value / 100 . PHP_EOL;
-    }
+    function printMenu(array $menu, int &$priceOfChoosedDrink): void
+    {
+        $index = 0;
+        foreach ($menu as $key => $value) {
+            $index++;
+            echo "[$index] " . $key . " EUR " . $value / 100 . PHP_EOL;
+        }
 
     $choice = readline('Enter: ');
     if ($choice != '1' && $choice != '2' && $choice != '3') {
