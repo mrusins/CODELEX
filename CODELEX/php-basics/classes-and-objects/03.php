@@ -2,7 +2,7 @@
 
 class FuelGauge
 {
-    private $current;
+    private int $current;
 
     function __construct(int $current)
     {
@@ -35,7 +35,7 @@ class FuelGauge
 
 class Odometer
 {
-    private $current;
+    private int $current;
 
     function __construct(int $current)
     {
