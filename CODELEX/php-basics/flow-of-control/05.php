@@ -8,91 +8,61 @@ for ($i = 0; $i < count($word); $i++) {
 
     switch ($word[$i]) {
         case "A":
-            echo "2 ";
-            break;
         case "B":
-            echo "2 ";
-            break;
         case "C":
             echo "2 ";
             break;
+
         case "D":
-            echo "3 ";
-            break;
         case "E":
-            echo "3 ";
-            break;
         case "F":
             echo "3 ";
             break;
+
         case "G":
-            echo "4 ";
-            break;
         case "H":
-            echo "4 ";
-            break;
         case "I":
             echo "4 ";
             break;
+
         case "J":
-            echo "5 ";
-            break;
         case "K":
-            echo "5 ";
-            break;
         case "L":
             echo "5 ";
             break;
+
         case "M":
-            echo "6 ";
-            break;
         case "N":
-            echo "6 ";
-            break;
         case "O":
             echo "6 ";
             break;
+
         case "P":
-            echo "7 ";
-            break;
         case "Q":
-            echo "7 ";
-            break;
         case "R":
-            echo "7 ";
-            break;
         case "S":
             echo "7 ";
             break;
+
         case "T":
-            echo "8 ";
-            break;
         case "U":
-            echo "8 ";
-            break;
         case "V":
             echo "8 ";
             break;
+
         case "W":
-            echo "9 ";
-            break;
         case "X":
-            echo "9 ";
-            break;
         case "Y":
-            echo "9 ";
-            break;
         case "Z":
             echo "9 ";
+            break;
+
         case " ":
             echo "_ ";
-
     }
-
 }
 
 echo PHP_EOL;
-
 
 for ($i = 0; $i < count($word); $i++) {
 
