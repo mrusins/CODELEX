@@ -2,7 +2,7 @@
 
 class FuelGauge
 {
-    public $current;
+    private $current;
 
     function __construct(int $current)
     {
@@ -17,21 +17,25 @@ class FuelGauge
     function decreaseFuelAmount(int $milage): void
     {
         $this->current -= $milage / 10;
+        if ($this->current <= 0) {
+            exit('Fuel tank is empty' . PHP_EOL);
+        }
+
     }
 
-    function puttingFuel(int $newCurrent): void
+    function puttingFuel(int $newCurrent) //TODO can't figure out why string throws error
     {
         $this->current += $newCurrent;
         if ($this->current > 70) {
             $this->current = 70;
-            echo PHP_EOL . PHP_EOL . PHP_EOL . 'FUEL TANK IS FULL!' . PHP_EOL;
+            return PHP_EOL . PHP_EOL . PHP_EOL . 'FUEL TANK IS FULL!' . PHP_EOL;
         }
     }
 }
 
 class Odometer
 {
-    public $current;
+    private $current;
 
     function __construct(int $current)
     {
@@ -53,22 +57,22 @@ class Odometer
     }
 }
 
-$car = new FuelGauge(0);
-$car2 = new Odometer(999999);
+$carFuel = new FuelGauge(0);
+$carOdo = new Odometer(999980);
 print("\033[2J\033[;H");
-echo $car->currentFuealAmount();
+echo $carFuel->currentFuealAmount();
 
 $addFuel = readline('Enter fuel in liters: ');
-$car->puttingFuel($addFuel);
+echo $carFuel->puttingFuel($addFuel);
 
 do {
-    echo $car->currentFuealAmount();
-    echo $car2->currentOdometer();
+    echo $carFuel->currentFuealAmount();
+    echo $carOdo->currentOdometer();
     $addMilage = readline('Enter milage: ');
     $i = $addMilage;
-    $car->puttingFuel(0);
-    $car2->driveOdometer($addMilage);
-    $car->decreaseFuelAmount($addMilage);
+    $carFuel->puttingFuel(0);
+    $carOdo->driveOdometer($addMilage);
+    $carFuel->decreaseFuelAmount($addMilage);
     echo PHP_EOL . PHP_EOL . PHP_EOL;
 } while ($i > 0);
 

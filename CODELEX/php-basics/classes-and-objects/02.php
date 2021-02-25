@@ -2,8 +2,8 @@
 
 class Point
 {
-    public $x;
-    public $y;
+    private $x;
+    private $y;
 
     function __construct(int $x, int $y)
     {
@@ -11,7 +11,7 @@ class Point
         $this->y = $y;
     }
 
-    function swapPoints($point1, $point2): string
+    function swapPoints(object $point1, object $point2): string
     {
 
         return "(" . $point2->x . ", " . $point2->y . ")" . PHP_EOL . "(" . $point1->x . ", " . $point1->y . ")" . PHP_EOL;
@@ -23,4 +23,4 @@ $p2 = new Point(-3, 6);
 $p3 = new Point(-1, 3);
 
 
-echo $p3->swapPoints($p1, $p2);
+echo $p2->swapPoints($p1, $p3);

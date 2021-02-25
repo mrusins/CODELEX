@@ -2,9 +2,9 @@
 
 class Product
 {
-    public $name;
-    public $price;
-    public $amount;
+    private string $name;
+    private int $price;
+    private int $amount;
 
     function __construct(string $name, float $price, int $amount)
     {
@@ -13,14 +13,18 @@ class Product
         $this->amount = $amount;
     }
 
-    function printProduct()
+    function printProduct(): string
     {
         return $this->name . ', ' . $this->price . ', ' . $this->amount . PHP_EOL;
     }
 
-    function set_price($newName)
+    function set_price(string $newName): void
     {
         $this->price = $newName;
+    }
+    function set_amount(string $newAmount): void
+    {
+        $this->amount = $newAmount;
     }
 }
 
@@ -30,6 +34,7 @@ $printer = new Product('Epson-EB-o4', 440.65, 2);
 
 
 $printer->set_price(100.22);
+$printer->set_amount(22);
 
 echo $tv->printProduct();
 echo $phone->printProduct();
