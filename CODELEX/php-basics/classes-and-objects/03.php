@@ -14,16 +14,16 @@ class FuelGauge
         return 'Current fuel amount: ' . $this->current . PHP_EOL;
     }
 
-    function decreaseFuelAmount(int $milage): void
+    function decreaseFuelAmount(int $mileage): void
     {
-        $this->current -= $milage / 10;
+        $this->current -= $mileage / 10;
         if ($this->current <= 0) {
             exit('Fuel tank is empty' . PHP_EOL);
         }
 
     }
 
-    function puttingFuel(int $newCurrent) //TODO can't figure out why string throws error
+    function fillingFuel(int $newCurrent) //TODO can't figure out why string throws error
     {
         $this->current += $newCurrent;
         if ($this->current > 70) {
@@ -45,14 +45,15 @@ class Odometer
 
     function currentOdometer(): string
     {
-        return 'Current odometer: ' . $this->current . PHP_EOL;
+        return 'Current odometer: ' . ceil($this->current) . PHP_EOL;
     }
 
     function driveOdometer(int $lastDrive): void
     {
+        $maxOdometer = 999999;
         $this->current += $lastDrive;
-        if ($this->current > 999999) {
-            $this->current = ($lastDrive - (999999 - $this->current)) / 2 - 1;
+        if ($this->current > $maxOdometer) {
+            $this->current = ($lastDrive - ($maxOdometer - $this->current)) / 2 - 1;
         }
     }
 }
@@ -62,15 +63,15 @@ $carOdo = new Odometer(999980);
 print("\033[2J\033[;H");
 echo $carFuel->currentFuealAmount();
 
-$addFuel = readline('Enter fuel in liters: ');
-echo $carFuel->puttingFuel($addFuel);
+$fillFuel = readline('Enter fuel in liters: ');
+echo $carFuel->fillingFuel($fillFuel);
 
 do {
     echo $carFuel->currentFuealAmount();
     echo $carOdo->currentOdometer();
-    $addMilage = readline('Enter milage: ');
+    $addMilage = readline('Enter mileage: ');
     $i = $addMilage;
-    $carFuel->puttingFuel(0);
+    $carFuel->fillingFuel(0);
     $carOdo->driveOdometer($addMilage);
     $carFuel->decreaseFuelAmount($addMilage);
     echo PHP_EOL . PHP_EOL . PHP_EOL;
