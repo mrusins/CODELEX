@@ -42,6 +42,7 @@ class Children
     {
         $this->name = $name;
     }
+    //floor($bet/10)
 
 }
 
@@ -53,7 +54,7 @@ $muris = new Children('Muris', 2007);
 $dzeris = new Children('Dzeris', 2006);
 
 $andris ->setName('Maris');
-$andris ->setClass(10);
+$andris ->setClass(12);
 
 echo $andris->printInfo();
 echo $dzeris->printInfo();
