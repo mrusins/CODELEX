@@ -59,7 +59,7 @@ class Application
     private function returnVideo(): void
     {
         $name = readline('Enter video title to return: ' . PHP_EOL);
-        $rating = readline('Enter your rating 1 - 100: ' . PHP_EOL);
+        $rating = (int) readline('Enter your rating 1 - 100: ' . PHP_EOL);
         $this->store->return($name, $rating);
     }
 

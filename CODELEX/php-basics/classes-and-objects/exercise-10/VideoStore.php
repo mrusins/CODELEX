@@ -24,18 +24,7 @@ class VideoStore
         echo PHP_EOL;
     }
 
-    public function checkOut(string $title, string $date): void
-    {
-        foreach ($this->allVideos as $array => $video) {
-
-            if ($video->title == $title) {
-                $video->isAvailable = false;
-                $video->checkedOut = $date;
-            }
-        }
-    }
-
-    public function return(string $title, int $rating): void
+ public function return(string $title, int $rating): void
     {
         foreach ($this->allVideos as $array => $video) {
 
@@ -43,7 +32,7 @@ class VideoStore
                 $video->isAvailable = true;
                 $video->returned = date("d/m/Y");
                 $video->averageRating = ($video->averageRating + $rating) / 2;
-            }
+            } else {echo 'Wrong name'.PHP_EOL;}
         }
     }
 
@@ -53,7 +42,7 @@ class VideoStore
             if ($video->title === $name) {
                 $video->isAvailable = false;
                 $video->checkedOut = date("d/m/Y");
-            }
+            } else {echo 'Wrong name'.PHP_EOL;}
         }
     }
 
