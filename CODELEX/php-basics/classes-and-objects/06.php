@@ -25,13 +25,13 @@ class Drinkers
     {
 
         return "Total number of people surveyed " . $this->surveyed . PHP_EOL . "Approximately "
-            . $this->calculate_energy_drinkers($this->surveyed) . " bought at least one energy drink" . PHP_EOL
-            . $this->calculate_prefer_citrus(10) . " of those " . "prefer citrus flavored energy drinks."
+            . $this->calculateEnergyDrinkers($this->surveyed) . " bought at least one energy drink" . PHP_EOL
+            . $this->calculatePreferCitrus(10) . " of those " . "prefer citrus flavored energy drinks."
             . PHP_EOL;
 
     }
 
-    private function calculate_energy_drinkers(int $numberSurveyed): string
+    private function calculateEnergyDrinkers(int $numberSurveyed): string
     {
 
         return strval($numberSurveyed * $this->purchased_energy_drinks / 100);
@@ -39,7 +39,7 @@ class Drinkers
     }
 
 
-    private function calculate_prefer_citrus(int $numberSurveyed): string
+    private function calculatePreferCitrus(int $numberSurveyed): string
     {
         return strval($numberSurveyed * $this->purchased_energy_drinks * $this->prefer_citrus_drinks / 100);
 
