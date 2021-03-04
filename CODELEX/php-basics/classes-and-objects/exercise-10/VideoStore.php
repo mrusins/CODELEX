@@ -36,7 +36,7 @@ class VideoStore
         }
     }
 
-    public function rentVideo($name)
+    public function rentVideo(string $name):void
     {
         foreach ($this->allVideos as $array => $video) {
             if ($video->title === $name) {

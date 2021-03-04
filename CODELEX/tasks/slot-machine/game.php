@@ -61,30 +61,34 @@ class Elements
         array_push($this->allElements, $newElement);
     }
 
-    public function table(): void
+    public function clearTableArray(): void
+    {
+        $this->tableArray = [];  //clear array of table
+    }
+
+    public function table(): array
     {
 
         $count = count($this->allElements);
 
         for ($i = 0; $i < 9; $i++) {
 
-            $random = rand(0, 5); //TODO must get count of elements array
+            $random = rand(0, $count - 1);
             array_push($this->tableArray, $this->allElements[$random]);
 
-
         }
+        return $this->tableArray;
 
+    }
+
+    public function testTable($x): string
+    {
+        return $this->tableArray[$x];
     }
 
     public function printTable(): void
     {
         $this->winSum = 0;
-        for ($i = 0; $i < 9; $i++) {
-            echo $this->tableArray[$i] . ' ';
-            if (($i + 1) % 3 == 0) {
-                echo PHP_EOL;
-            }
-        }
 
         if ($this->tableArray[0] == $this->tableArray[1] && $this->tableArray[0] == $this->tableArray[2]) {
             echo 'BINGO' . PHP_EOL;
@@ -108,8 +112,6 @@ class Elements
             echo 'BINGO' . PHP_EOL;
             $this->winSum = 20;
         }
-        $this->tableArray = [];  //clear array of table
-
     }
 
     public function generateTable(): void
@@ -117,12 +119,10 @@ class Elements
         $this->table();
     }
 
-
     public function getWinSum(): int
     {
         return $this->winSum;
     }
-
 }
 
 //########## - GAME LOGIC - ##############
@@ -132,12 +132,13 @@ $machine = new Machine(0, 0);
 $elements = new Elements(['X', 'C', 'O', '7', '#'], []);
 $elements->addElement('M');   // TODO ADD NEW ELEMENT
 echo $elements->prinAllElements() . PHP_EOL;
-$elements->generateTable();
+
 
 $startMoney = readline('Enter your deposit(min 100) :' . PHP_EOL);
 if ($startMoney < 100) {
     exit("You must add 100 EUR or mere" . PHP_EOL);
 }
+
 $bet = readline('Enter your bet(min 10) :');
 if ($bet < 10) {
     exit("You must add 10 EUR or mere" . PHP_EOL);
@@ -147,16 +148,25 @@ $machine->deposite($startMoney);
 
 do {
     print("\033[2J\033[;H");
+
     $elements->generateTable();
 
+    for ($i = 0; $i < 9; $i++) {
+        echo $elements->testTable($i) . ' ';
+        if (($i + 1) % 3 == 0) {
+            echo PHP_EOL;
+            usleep(500000);
+        }
+    }
+
     if ($machine->printSum() <= 0) {
-        exit('Your deposit is 0!' . PHP_EOL);
+        exit('THE END' . PHP_EOL);
     }
     $elements->printTable();
 
 
     $machine->bet($bet);
-    $i = $startMoney;
+
     echo $machine->printSumAndBet();
     $spin = strtolower(readline('Enter to spin reels or "b" to change your BET:' . PHP_EOL));
     if ($spin == 'b') {
@@ -164,14 +174,16 @@ do {
     }
 
     echo $spin . PHP_EOL;
-    echo $elements->getWinSum() . PHP_EOL;
 
-    $winRate = $bet;  //TODO figure out why floor($bet/10) not working
     if ($elements->getWinSum() > 1) {
-        $machine->deposite($elements->getWinSum() * $winRate);
+        $machine->deposite($bet * floor($bet / 10));
     }
     $machine->depositeMinusBet($bet);
 
+    $elements->clearTableArray();
+
 
 } while ($machine->printSum() > -10);
+
+echo ("THE END") . PHP_EOL;
 

@@ -8,7 +8,7 @@ $fridge = new Product(['bread', 'beets', 'love', 'AK47']);
 
 $recipes = new RecipeCollection();
 
-$recipes->setRecipeCollection(new Recipe('Rujiena salad', ['beets', 'onions', 'majonese', 'love']));
+$recipes->setRecipeCollection(new Recipe('Rujiena salad', ['beets', 'onions', 'mayonnaise', 'love']));
 
 $recipes->setRecipeCollection(new Recipe('Congo salad', ['childhood', 'empty stomach', 'AK47']));
 

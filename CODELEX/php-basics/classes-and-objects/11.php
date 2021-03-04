@@ -22,7 +22,7 @@ class Bank
         $this->accounts[] = $add;
     }
 
-    public function getAll(): void
+    public function getAll(): string
     {
         echo PHP_EOL;
         foreach ($this->accounts as $array => $account) {
@@ -31,7 +31,7 @@ class Bank
         echo PHP_EOL;
     }
 
-    public function transfer(string $accountFrom, string $accountTo, float $howMuch)
+    public function transfer(string $accountFrom, string $accountTo, float $howMuch): void
     {
 
         foreach ($this->accounts as $array => $account) {
