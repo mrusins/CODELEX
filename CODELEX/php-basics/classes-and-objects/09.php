@@ -37,7 +37,7 @@ class BankAccount
 }
 
 $user = new BankAccount();
-$user->addUser(new User('ben', 'Benson', 256.9));
+$user->addUser(new User('ben', 'Benson', 17.50));
 $user->addUser(new User('steve', 'Stevie Wonders', -459.56));
 
-echo $user->showUserNameAndBalance('steve');
+echo $user->showUserNameAndBalance('ben');
