@@ -6,9 +6,9 @@ require_once 'Product.php';
 require_once 'ProductCollection.php';
 
 $fridge = new ProductCollection();
-$fridge->addProduct(new Product('Test'));
-$fridge->addProduct(new Product('Test2'));
-$fridge->addProduct(new Product('Test3'));
+$fridge->addProduct(new Product('beets'));
+$fridge->addProduct(new Product('AK47'));
+$fridge->addProduct(new Product('love'));
 
 $recipes = new RecipeCollection();
 
