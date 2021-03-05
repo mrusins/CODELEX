@@ -3,8 +3,12 @@
 require_once 'Recipe.php';
 require_once 'RecipeCollection.php';
 require_once 'Product.php';
+require_once 'ProductCollection.php';
 
-$fridge = new Product(['bread', 'beets', 'love', 'AK47']);
+$fridge = new ProductCollection();
+$fridge->addProduct(new Product('Test'));
+$fridge->addProduct(new Product('Test2'));
+$fridge->addProduct(new Product('Test3'));
 
 $recipes = new RecipeCollection();
 
@@ -14,6 +18,9 @@ $recipes->setRecipeCollection(new Recipe('Congo salad', ['childhood', 'empty sto
 
 
 $allRecipes = $recipes->getRecipeCollection();
+
+var_dump($fridge->getProducts());
+
 
 while (true) {
     echo "Choose the operation you want to perform \n";
@@ -31,24 +38,31 @@ while (true) {
             die;
         case 1:
             $newProduct = readline('Enter new product in fridge: ' . PHP_EOL);
-            $fridge->addProduct($newProduct);
+            $fridge->addProduct(new Product($newProduct));
             break;
         case 2:
-            echo PHP_EOL . 'Products in fridge: ' . implode(', ', $fridge->getProducts()) . PHP_EOL . PHP_EOL;
+            echo PHP_EOL . 'Products in fridge: ';
+            foreach ($fridge->getProducts() as $product) {
+                echo $product->name . '  ';
+            }
+            echo PHP_EOL . PHP_EOL;
             break;
         case 3:
             echo PHP_EOL;
             foreach ($allRecipes as $recipes => $recipe) {
-
                 echo '-' . $recipe->name . '-' . ': ' . implode(', ', $recipe->ingredients) . PHP_EOL;
             }
             echo PHP_EOL;
             break;
         case 4:
             echo PHP_EOL;
+            $fridgeToArray = [];
+            foreach ($fridge->getProducts() as $product) {
+                array_push($fridgeToArray, $product->name);
+            }
             foreach ($allRecipes as $recipes => $recipe) {
 
-                $notForRecipe = array_diff($recipe->ingredients, $fridge->getProducts());
+                $notForRecipe = array_diff($recipe->ingredients, $fridgeToArray);
 
                 echo 'To make -' . $recipe->name . '- you missing: ' . implode(', ', $notForRecipe) . PHP_EOL;
             }

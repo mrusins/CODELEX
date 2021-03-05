@@ -3,20 +3,11 @@
 class Product
 {
 
-    public array $ingredient;
+    public string $name;
 
-    function __construct(array $ingredient)
+    public function __construct(string $name)
     {
-        $this->ingredient = $ingredient;
+        $this->name = $name;
     }
 
-    public function getProducts(): array
-    {
-        return $this->ingredient;
-    }
-
-    public function addProduct(string $newProduct): void
-    {
-        array_push($this->ingredient, $newProduct);
-    }
 }
