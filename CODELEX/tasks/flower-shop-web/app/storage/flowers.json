@@ -1,0 +1,16 @@
+{
+  "flower1": [
+    {
+      "name": "JSON",
+      "amount": 123,
+      "price": 33
+    }
+  ],
+  "flower2": [
+    {
+      "name": "red JSON",
+      "amount": 123,
+      "price": 33
+    }
+  ]
+}
