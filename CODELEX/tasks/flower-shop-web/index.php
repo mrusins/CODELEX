@@ -1,7 +1,3 @@
-<html>
-<body>
-<h1>Flowers</h1>
-
 <?php
 
 require_once 'vendor/autoload.php';
@@ -34,45 +30,13 @@ $nr4->setFromWarehouse(['flowerS', 'null2.2', '13']);
 $allItems = new FromAllWarehouses();
 $allItems->setToTotal(array_merge($nr1->getFromWarehouse($flowersInStock), $nr4->getFromWarehouse($flowersInStock),
     $nr5->getFromWarehouse($flowersInStock), $nr6->getFromWarehouse($flowersInStock)));
-echo "<br>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Amount</th>
-    <th>Price</th>
-  </tr>";
 
-foreach ($allItems->getFromTotal() as $item => $flower) {
-    $finalPrice = $flower->price * 1.8 / 100;
-    $finalPriceDiscount = round($finalPrice - ($finalPrice / 100 * 20), 2);
-    echo "
-              <tr>
-    <td>$flower->name</td>
-    <td>$flower->amount</td>
-    <td>$finalPriceDiscount</td>
-    </tr>
-            ";
-}
+
+
+require_once 'view.php';
 ?>
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
 
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>
-</body>
-</html>
 
 
 
