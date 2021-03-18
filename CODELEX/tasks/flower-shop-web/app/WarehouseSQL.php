@@ -10,7 +10,7 @@ class WarehouseSQL implements WarehouseInterface
 
     public function setFromWarehouse(): void
     {
-        $conn = mysqli_connect('localhost', 'maris', 'maris12345', 'WarehouseSQL');
+        $conn = mysqli_connect('localhost', '', '', 'WarehouseSQL');
         if (!$conn) {
             echo "Error DB connect: " . mysqli_connect_error();
         }
