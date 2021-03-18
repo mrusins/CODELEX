@@ -12,9 +12,9 @@
 
     Gender:
     <form method="post">
-        <input type="radio" name="gender" <?php if (isset($gender) && $gender == "female") echo "checked"; ?>
+        <input type="radio" name="gender"
                value="female">Female
-        <input type="radio" name="gender" <?php if (isset($gender) && $gender == "male") echo "checked"; ?>
+        <input type="radio" name="gender"
                value="male">Male<br>
         <input type="submit">
 
@@ -48,6 +48,10 @@
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
                 width: 100%;
+            }
+            h1 {
+                font-family: arial, sans-serif;
+                color: brown;
             }
 
             td, th {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Vehicles;
+
 
 class Car implements VehicleInterface
 {

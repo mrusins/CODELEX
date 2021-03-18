@@ -1,12 +1,11 @@
 <?php
-require_once 'VehicleInterface.php';
-require_once 'RacersCollection.php';
-require_once 'vehicles/Car.php';
-require_once 'vehicles/Bike.php';
-require_once 'Track.php';
-require_once 'Game.php';
 
-
+require_once 'vendor/autoload.php';
+use App\Game;
+use Vehicles\Car;
+use Vehicles\Bike;
+use App\RacersCollection;
+use App\VehicleInterface;
 $race = new RacersCollection();
 $race->setRacer(new Bike(1,1,5,10 ));
 $race->setRacer(new Car(2,1,4,5 ));

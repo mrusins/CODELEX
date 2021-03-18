@@ -1,5 +1,8 @@
 <?php
 
+namespace App;
+
+
 class Game
 {
     private array $racersCollection;

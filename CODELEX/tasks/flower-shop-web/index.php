@@ -7,9 +7,14 @@ use App\WarehouseAbnormal;
 use App\WarehouseNormal;
 use App\WarehouseJSON;
 use App\WarehouseCSV;
+use App\WarehouseSQL;
 use App\WarehouseInterface;
 
-$flowersInStock = ['', 'red JSON', 'JSON', 'tulips', 'CSVFlower3', 'chamomile', 'CSVFlower2', 'roses', 'flowerX', 'flowerZ', 'flowerS', 'flowerY'];
+$flowersInStock = ['', 'red JSON', 'JSON', 'tulips', 'CSVFlower3', 'chamomile', 'CSVFlower2',
+    'roses', 'flowerX', 'flowerZ', 'flowerS', 'flowerY', 'sqlTulip', 'sqlRose', 'sqlFlower'];
+
+$nr7 = new WarehouseSQL();
+$nr7->setFromWarehouse();
 
 $nr5 = new WarehouseJSON();
 $nr5->setFromWarehouse("app/storage/flowers.json");
@@ -29,8 +34,7 @@ $nr4->setFromWarehouse(['flowerS', 'null2.2', '13']);
 
 $allItems = new FromAllWarehouses();
 $allItems->setToTotal(array_merge($nr1->getFromWarehouse($flowersInStock), $nr4->getFromWarehouse($flowersInStock),
-    $nr5->getFromWarehouse($flowersInStock), $nr6->getFromWarehouse($flowersInStock)));
-
+    $nr5->getFromWarehouse($flowersInStock), $nr6->getFromWarehouse($flowersInStock), $nr7->getFromWarehouse($flowersInStock)));
 
 
 require_once 'view.php';
