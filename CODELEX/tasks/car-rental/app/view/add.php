@@ -12,12 +12,27 @@
     <input type="text" id="lname" name="model"><br><br>
     <label for="fname">Odometer:</label>
     <input type="number" id="fname" name="odometer"><br><br>
+
     <label for="lname">Fuel:</label>
-    <input type="text" id="lname" name="fuel"><br><br>
+
+    <select id="cars" name="fuel">
+        <option value="petrol">Petrol</option>
+        <option value="diesel">Diesel</option>
+        <option value="electricity">Electricity</option>
+        <option value="hybrid">Hybrid</option>
+    </select><br><br>
+
     <label for="fname">Price:</label>
     <input type="text" id="fname" name="price"><br><br>
     <label for="lname">Status:</label>
-    <input type="text" id="lname" name="status"><br><br>
+
+    <select id="cars" name="status">
+        <option value="yes">Avail</option>
+        <option value="no">Not avail</option>
+        <option value="in service">in service</option>
+
+    </select><br><br>
+
     <input type="submit" value="Submit">
 </form>
 

@@ -19,11 +19,11 @@ class RentService
         if (count($this->post) == 1) {
             foreach ($rent->getCars() as $key => $value) {
                 if (key($this->post) == $value->id && $this->post[$value->id] == 'RENT') {
-                    $value->status = 'not avail';
+                    $value->status = 'no';
                     $rent->seveToJson();
                 }
                 if (key($this->post) == $value->id && $this->post[$value->id] == 'RETURN') {
-                    $value->status = 'avail';
+                    $value->status = 'yes';
                     $rent->seveToJson();
                 }
             }
