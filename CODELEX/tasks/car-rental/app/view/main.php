@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <body>
 <h1>CAR RENTAL</h1>
@@ -36,42 +37,49 @@
     ";
     }
     ?>
+</table>
+<br><br>
+<form action="/admin" method="post" target="_blank">
+    To Admin page:
+    <button type="submit">Add/Remove</button>
 
-    <style>
-        p {
-            margin-top: 0em;
-            margin-bottom: 0em;
-            text-indent: 30px;
-            text-transform: uppercase;
-        }
+</form>
 
-        table {
-            font-family: monospace, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+<style>
+    p {
+        margin-top: 0em;
+        margin-bottom: 0em;
+        text-indent: 30px;
+        text-transform: uppercase;
+    }
 
-        h1 {
-            font-family: arial, sans-serif;
-            color: green;
-        }
+    table {
+        font-family: monospace, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-        td {
-            border: 1px solid black;
-            text-align: left;
-            padding: 8px;
-        }
+    h1 {
+        font-family: arial, sans-serif;
+        color: green;
+    }
 
-        th {
-            border: 1px solid black;
-            text-align: left;
-            padding: 8px;
-            background: darkgray;
-        }
+    td {
+        border: 1px solid black;
+        text-align: left;
+        padding: 8px;
+    }
 
-        tr:nth-child(even) {
-            background-color: lightgrey;
-        }
-    </style>
+    th {
+        border: 1px solid black;
+        text-align: left;
+        padding: 8px;
+        background: darkgray;
+    }
+
+    tr:nth-child(even) {
+        background-color: lightgrey;
+    }
+</style>
 </body>
 </html>

@@ -17,10 +17,10 @@ class AddService
 
     public function add($post)
     {
-        if (count($post) > 1) {
+        if (isset($post['model'])) {
             $allCars = new CarCollection();
             $allCars->setCars();
-            $id = count($allCars->getCars()) + 1;
+            $id = $this->findLargestId() + 1;
             array_push($this->all, new Car($id, $post['model'], $post['odometer'], $post['fuel'], $post['price'], $post['status'],));
             $newJsonString = json_encode($this->all);
             file_put_contents('app/garage/garage.json', $newJsonString);
@@ -28,24 +28,21 @@ class AddService
 
     }
 
-    public function allCars(): array
+    public function printAllCarsToDelete(): array
     {
 
         return $this->all;
     }
 
-    public function deleteCar(array $post)
+    private function findLargestId(): int
     {
-        $i = 1;
-        if (key($post) == 'delete') {
-            foreach ($this->all as $item => $value) {
-                if ($post['delete'] == $i) {
-                    unset($this->all[$i - 1]);
-                    $newJsonString = json_encode($this->all);
-                    file_put_contents('app/garage/garage.json', $newJsonString);
-                }
-                $i++;
+        $largest = 0;
+        foreach ($this->all as $item => $value) {
+            if ($value->id > $largest) {
+                $largest = $value->id;
             }
         }
+        return $largest;
     }
+
 }

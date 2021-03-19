@@ -7,7 +7,7 @@ use App\Controllers\CarAddController;
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute(['GET', 'POST'], '/', [CarRentalController::class, 'index']);
-    $r->addRoute(['GET', 'POST'], '/add', [CarAddController::class, 'index']);
+    $r->addRoute(['GET', 'POST'], '/admin', [CarAddController::class, 'index']);
 
 });
 
