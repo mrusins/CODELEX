@@ -6,8 +6,7 @@
 <h1>Add car</h1>
 
 <form action="/add" method="post" target="">
-    <label for="id">ID:</label>
-    <input type="number" id="id" name="id"><br><br>
+
     <label for="lname">Model:</label>
     <input type="text" id="lname" name="model"><br><br>
     <label for="fname">Odometer:</label>
@@ -36,7 +35,32 @@
     <input type="submit" value="Submit">
 </form>
 
-<p>Click on the submit button.</p>
+<p>Click on the submit button.</p><br>
+<h1>Remove car</h1>
+
+
+<form action="/add" method="post" target="">
+
+
+
+    <select id="cars" name="delete">
+
+        <?PHP
+        foreach ($add->allCars() as $item=>$value) {
+            $name = $value->model;
+            $id = $value->id;
+            echo "<option value=$id>$name</option> ";
+        }
+        ?>
+
+
+    </select><br><br>
+
+    <input type="submit" value="Submit">
+    <p>Click on the submit button to delete car.</p>
+</form>
+
+
 
 </body>
 </html>

@@ -13,6 +13,7 @@ class CarAddController
 
         $add = new AddService();
         $add->add($_POST);
+        $add->deleteCar($_POST);
 
         require_once __DIR__ . '/../view/add.php';
     }
