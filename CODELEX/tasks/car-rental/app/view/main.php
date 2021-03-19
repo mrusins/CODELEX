@@ -28,7 +28,7 @@
         <td>$value->price</td>
         <td>$value->odometer</td>
         <td>$value->fuel</td>
-        <td><p style='color:$statusColour' >$value->status</p> 
+        <td><p style='color:$statusColour' >$value->status</p>
         </td>
         <td><form  method='post'> <input type='submit' $buttonDisable name=$value->id value='RENT'></form></td>
         <td><form  method='post'> <input type='submit' $buttonDisable name=$value->id value='RETURN'></form></td>

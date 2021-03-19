@@ -10,8 +10,8 @@ public function index()
 
     $run->dbService();
 
-
     require_once __DIR__ . '/../view/main.php';
+
 
 }
 

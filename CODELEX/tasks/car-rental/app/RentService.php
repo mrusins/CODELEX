@@ -30,6 +30,5 @@ class RentService
         }
         return $rent->getCars();
 
-
     }
 }
