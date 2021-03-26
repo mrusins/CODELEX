@@ -1,0 +1,20 @@
+{
+    "name": "marisrusins/rsp-web",
+    "description": "RSP",
+    "authors": [
+        {
+            "name": "mrusins",
+            "email": "m.rusins@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Tests\\": "tests/"
+
+        }
+    }
+}
