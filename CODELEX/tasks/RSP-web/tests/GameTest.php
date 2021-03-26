@@ -88,15 +88,15 @@ class GameTest extends TestCase
         $test = new Game($myChoice, $this->collection());
 
         $test->game('Rock');
-        $this->assertEquals('You win!', $test->getWinner(), 'Rock-Scissors');
+        $this->assertEquals('You win!', $test->getWinner());
         $test->game('Spock');
-        $this->assertEquals('You win!', $test->getWinner(), 'Rock-Lizard');
+        $this->assertEquals('You win!', $test->getWinner());
         $test->game('Paper');
-        $this->assertEquals('TIE', $test->getWinner(), 'Rock-Rock');
+        $this->assertEquals('TIE', $test->getWinner());
         $test->game('Scissors');
-        $this->assertEquals('PC win!', $test->getWinner(), 'Rock-Spock');
+        $this->assertEquals('PC win!', $test->getWinner());
         $test->game('Lizard');
-        $this->assertEquals('PC win!', $test->getWinner(), 'Rock-Paper');
+        $this->assertEquals('PC win!', $test->getWinner());
     }
 
     public function testWinnerScissors()
@@ -105,15 +105,15 @@ class GameTest extends TestCase
         $test = new Game($myChoice, $this->collection());
 
         $test->game('Paper');
-        $this->assertEquals('You win!', $test->getWinner(), 'Rock-Scissors');
+        $this->assertEquals('You win!', $test->getWinner());
         $test->game('Lizard');
-        $this->assertEquals('You win!', $test->getWinner(), 'Rock-Lizard');
+        $this->assertEquals('You win!', $test->getWinner());
         $test->game('Scissors');
-        $this->assertEquals('TIE', $test->getWinner(), 'Rock-Rock');
+        $this->assertEquals('TIE', $test->getWinner());
         $test->game('Spock');
-        $this->assertEquals('PC win!', $test->getWinner(), 'Rock-Spock');
+        $this->assertEquals('PC win!', $test->getWinner());
         $test->game('Rock');
-        $this->assertEquals('PC win!', $test->getWinner(), 'Rock-Paper');
+        $this->assertEquals('PC win!', $test->getWinner());
     }
 
     public function testWinnerSpock()
@@ -122,15 +122,15 @@ class GameTest extends TestCase
         $test = new Game($myChoice, $this->collection());
 
         $test->game('Scissors');
-        $this->assertEquals('You win!', $test->getWinner(), 'Rock-Scissors');
+        $this->assertEquals('You win!', $test->getWinner());
         $test->game('Rock');
-        $this->assertEquals('You win!', $test->getWinner(), 'Rock-Lizard');
+        $this->assertEquals('You win!', $test->getWinner());
         $test->game('Spock');
-        $this->assertEquals('TIE', $test->getWinner(), 'Rock-Rock');
+        $this->assertEquals('TIE', $test->getWinner());
         $test->game('Lizard');
-        $this->assertEquals('PC win!', $test->getWinner(), 'Rock-Spock');
+        $this->assertEquals('PC win!', $test->getWinner());
         $test->game('Paper');
-        $this->assertEquals('PC win!', $test->getWinner(), 'Rock-Paper');
+        $this->assertEquals('PC win!', $test->getWinner());
     }
 
     public function testWinnerLizard()
@@ -139,15 +139,15 @@ class GameTest extends TestCase
         $test = new Game($myChoice, $this->collection());
 
         $test->game('Paper');
-        $this->assertEquals('You win!', $test->getWinner(), 'Rock-Scissors');
+        $this->assertEquals('You win!', $test->getWinner());
         $test->game('Spock');
-        $this->assertEquals('You win!', $test->getWinner(), 'Rock-Lizard');
+        $this->assertEquals('You win!', $test->getWinner());
         $test->game('Lizard');
-        $this->assertEquals('TIE', $test->getWinner(), 'Rock-Rock');
+        $this->assertEquals('TIE', $test->getWinner());
         $test->game('Rock');
-        $this->assertEquals('PC win!', $test->getWinner(), 'Rock-Spock');
+        $this->assertEquals('PC win!', $test->getWinner());
         $test->game('Scissors');
-        $this->assertEquals('PC win!', $test->getWinner(), 'Rock-Paper');
+        $this->assertEquals('PC win!', $test->getWinner());
     }
 
 }
