@@ -15,8 +15,8 @@ class MySQLPersonsRepository implements PersonsRepository
     {
         $pdo = new PDOConnector(
             'localhost', // server
-            'maris',      // user
-            'maris1234',      // password
+            '',      // user
+            '',      // password
             'PersonService'   // database
         );
         $pdoConn = $pdo->connect('utf8', []); // charset, options
