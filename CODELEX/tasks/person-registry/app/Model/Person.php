@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 class Person
 {
@@ -19,4 +19,16 @@ class Person
         $this->description = $description;
     }
 
+    public function name():string{
+        return $this->name;
+    }
+    public function surname():string{
+        return $this->surname;
+    }
+    public function id():string{
+        return $this->id;
+    }
+    public function description():string{
+        return $this->description;
+    }
 }

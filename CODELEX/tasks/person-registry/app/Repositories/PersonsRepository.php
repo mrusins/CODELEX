@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataBase;
+namespace App\Repositories;
 
 interface PersonsRepository{
     public function searchByNameSurname(string $search);

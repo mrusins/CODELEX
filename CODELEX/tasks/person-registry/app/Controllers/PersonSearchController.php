@@ -2,15 +2,21 @@
 
 namespace App\Controllers;
 
-use App\SearchPersonService;
-use App\DataBase\DBInterface;
+use App\Services\SearchPersonService;
+
 
 
 class PersonSearchController
 {
+    private SearchPersonService $service;
+
+    public function __construct(SearchPersonService $service){
+        $this->service=$service;
+    }
+
     public function index()
     {
-        $run = new SearchPersonService($_POST);
+        $run = $this->service;
         require_once __DIR__ . '/../View/main.php';
     }
 }

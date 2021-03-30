@@ -25,8 +25,8 @@
 $description = '';
 $id = 0;
 foreach ($run->search() as $search => $persons) {
-    foreach ($persons as $person=>['name'=>$name, 'surname' => $surname,'id_number'=>$id, 'description'=>$description ]) {
-        echo " name: <b>$name</b> surname: <b>$surname</b> personal id: <b>$id</b> personal info: <b>$description</b> "  . "<br>";
+    foreach ($persons as $person => ['name' => $name, 'surname' => $surname, 'id_number' => $id, 'description' => $description]) {
+        echo " name: <b>$name</b> surname: <b>$surname</b> personal id: <b>$id</b> personal info: <b>$description</b> " . "<br>";
     }
 }
 
@@ -34,33 +34,38 @@ foreach ($run->search() as $search => $persons) {
 <br>
 <form action="/admin" method="post" id="usrform">
 
-<textarea rows="4" cols="50" name="newDescription" ><?PHP
- echo $description;
-?>
+<textarea rows="4" cols="50" name="newDescription"><?PHP
+    echo $description;
+    ?>
 
 </textarea>
-    <input type="hidden"  name="id" value="<?PHP echo $id?>">
+    <input type="hidden" name="id" value="<?PHP echo $id ?>">
     <br><br>
     <input type="submit">
 </form>
 <h2>Add new person</h2>
 
 <form action="/admin" method="post">
-    <input type="hidden"  name="newUser" value="newUser">
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname" required><br>
+    <input type="hidden" name="newUser" value="newUser">
+    <label for="fname">First name:(min 3 letters. Space allowed)</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <?PHP
+    if ($run->isNameValid() == false) {
+        echo "<p style='color:red'>Wrong name</p><br>";
+    }
+    ?>
     <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" required><br>
+    <input type="text" id="lname" name="lname"><br>
     <label for="lname">Personal ID: (xxxx or xx-xx)</label><br>
     <input type="text" id="lname" name="id" required><br>
     <?PHP
-    if($run->addNewPerson() == true){
+    if ($run->isIDValid() == false) {
         echo "<p style='color:red'>Wrong ID number</p><br>";
     }
     ?>
 
     <label for="lname">Description:</label><br>
-    <input type="text" id="lname" name="description" ><br><br>
+    <input type="text" id="lname" name="description"><br><br>
     <input type="submit" value="Submit">
 </form>
 

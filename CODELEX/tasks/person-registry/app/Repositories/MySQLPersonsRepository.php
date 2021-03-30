@@ -1,8 +1,7 @@
 <?php
 
-namespace App\DataBase;
+namespace App\Repositories;
 
-use App\DataBase\DBInterface;
 use Simplon\Mysql\PDOConnector;
 use Simplon\Mysql\Mysql;
 
@@ -15,8 +14,8 @@ class MySQLPersonsRepository implements PersonsRepository
     {
         $pdo = new PDOConnector(
             'localhost', // server
-            '',      // user
-            '',      // password
+            'maris',      // user
+            'maris1234',      // password
             'PersonService'   // database
         );
         $pdoConn = $pdo->connect('utf8', []); // charset, options

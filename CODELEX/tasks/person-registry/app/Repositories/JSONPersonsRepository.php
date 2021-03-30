@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Repositories;
 
 
 use App\DataBase\PersonsRepository;
