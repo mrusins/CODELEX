@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Search persons</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body class="text-pink-900 bg-indigo-50">
+<div class="container mx-auto bg-indigo-100 py-5 rounded-lg font-mono">
+    <h2 class="ml-4">Search Person by name, surname, age, personal ID or address</h2><br>
+
+    <form class="example" method="post" action="/">
+        <input type="text" placeholder="Search.." name="search" class="ml-4 rounded">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+<br>
+<div class="container mx-auto bg-gray-200 py-5 rounded-lg font-mono text-sm">
+    <h2 class="ml-4"> RESULTS:</h2>
+    {% for user in users %}
+        {% for id in user %}
+    <h2 class="ml-4">   {{ loop.index }} - name: <b>{{id.name}}</b> surname: <b>{{id.surname}}</b> id_number: <b>{{id.id_number}}</b>
+        age: <b>{{id.age}}</b> address: <b>{{id.adress}}</b> description: <b>{{id.description}}</b> <br> </h2>
+        {% endfor %}
+    {% endfor %}
+</div>
+<br>
+<div class="container mx-auto bg-indigo-100 py-5 rounded-lg font-mono">
+
+    <form action="/admin" method="post" target="_blank" class="font-mono text-sm">
+        <button class="ml-4" type="submit">ADMIN</button>
+    </form>
+</div>
+</body>
+</html>
+
+
+

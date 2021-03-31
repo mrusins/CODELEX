@@ -7,8 +7,9 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 
-class PersonSearchController
+class TestController
 {
+    public array $test = [['name'=>'a'],['name'=>'b']];
     private SearchPersonService $service;
 
     public function __construct(SearchPersonService $service){
@@ -23,6 +24,5 @@ class PersonSearchController
         $run->search();
 
         echo $twig->render('index.twig',['users'=>$run->getSearchResult()]);
-
     }
 }

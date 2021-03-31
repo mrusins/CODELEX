@@ -3,10 +3,12 @@ require_once 'vendor/autoload.php';
 
 use App\Controllers\PersonSearchController;
 use App\Controllers\PersonAdminController;
+use App\Controllers\TestController;
 use App\Repositories\MySQLPersonsRepository;
 use App\Repositories\PersonsRepository;
 use App\Services\AdminPersonService;
 use App\Services\SearchPersonService;
+
 
 $container = new League\Container\Container;
 
@@ -22,10 +24,13 @@ addArgument(SearchPersonService::class);
 $container->add(SearchPersonService::class, SearchPersonService::class)->
 addArgument(PersonsRepository::class);
 
+$container->add(TestController::class, TestController::class)->
+addArgument(SearchPersonService::class);
+
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute(['GET', 'POST'], '/', [PersonSearchController::class, 'index']);
     $r->addRoute(['GET', 'POST'], '/admin', [PersonAdminController::class, 'index']);
-
+    $r->addRoute(['GET', 'POST'], '/test', [TestController::class, 'index']);
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
