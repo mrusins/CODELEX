@@ -9,6 +9,7 @@ use App\Repositories\PersonsRepository;
 class SearchPersonService
 {
     const SEARCH = 'search';
+    const SEARCH_SURNAME = 'searchSurname';
     private array $searchResults=[];
     private PersonsRepository $personRepository;
 
@@ -18,11 +19,15 @@ class SearchPersonService
         $this->personRepository=$personRepository;
     }
 
-    public function search():array{
-        if(count($_POST)>0){
+    public function search():void{
+        if(key($_POST)=='search'){
             array_push($this->searchResults, $this->personRepository->searchByNameSurname($_POST[self::SEARCH]));
         }
+
+    }
+    public function getSearchResult():array{
         return $this->searchResults;
     }
+
 
 }

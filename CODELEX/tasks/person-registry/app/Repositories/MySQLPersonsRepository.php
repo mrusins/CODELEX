@@ -14,8 +14,8 @@ class MySQLPersonsRepository implements PersonsRepository
     {
         $pdo = new PDOConnector(
             'localhost', // server
-            '',      // user
-            '',      // password
+            'maris',      // user
+            'maris1234',      // password
             'PersonService'   // database
         );
         $pdoConn = $pdo->connect('utf8', []); // charset, options
@@ -25,7 +25,9 @@ class MySQLPersonsRepository implements PersonsRepository
     public function searchByNameSurname(string $search)  //if null returned -> fatal error
     {
 
-        return $result = $this->dbConn->fetchRowMany('SELECT name, surname, id_number, description FROM persons WHERE name = :name OR surname = :name OR id_number = :name', ['name' => $search]);
+        return $result = $this->dbConn->
+        fetchRowMany('SELECT name, surname, id_number,age,adress, description FROM persons
+WHERE name = :name OR surname = :name OR id_number = :name OR age = :name OR adress = :name', ['name' => $search]);
 
     }
 

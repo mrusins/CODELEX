@@ -17,6 +17,7 @@ class PersonSearchController
     public function index()
     {
         $run = $this->service;
+        $run->search();
         require_once __DIR__ . '/../View/main.php';
     }
 }
