@@ -21,8 +21,20 @@ class PersonSearchController
         $twig = new Environment($loader);
         $run = $this->service;
         $run->search();
+        echo $twig->render('index.twig',['users'=>$run->getSearchResult(), 'authorize'=>$run->authorize()]);
 
-        echo $twig->render('index.twig',['users'=>$run->getSearchResult()]);
 
     }
+    public function search()
+    {
+        $loader = new FilesystemLoader('templates');
+        $twig = new Environment($loader);
+        $run = $this->service;
+        $run->search();
+
+        echo $twig->render('index.twig',['users'=>$run->getSearchResult(), 'authorize'=>$run->authorize()]);
+
+    }
+
+
 }

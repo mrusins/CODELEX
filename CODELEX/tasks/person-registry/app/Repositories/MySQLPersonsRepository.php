@@ -14,8 +14,8 @@ class MySQLPersonsRepository implements PersonsRepository
     {
         $pdo = new PDOConnector(
             'localhost', // server
-            '',      // user
-            '',      // password
+            'maris',      // user
+            'maris1234',      // password
             'PersonService'   // database
         );
         $pdoConn = $pdo->connect('utf8', []); // charset, options
@@ -26,7 +26,7 @@ class MySQLPersonsRepository implements PersonsRepository
     {
 
         return $result = $this->dbConn->
-        fetchRowMany('SELECT name, surname, id_number,age,adress, description FROM persons
+        fetchRowMany('SELECT id, name, surname, id_number,age,adress, description FROM persons
 WHERE name = :name OR surname = :name OR id_number = :name OR age = :name OR adress = :name', ['name' => $search]);
 
     }
@@ -34,6 +34,11 @@ WHERE name = :name OR surname = :name OR id_number = :name OR age = :name OR adr
     public function editDescription(array $idNumber, array $newDescription): void
     {
         $this->dbConn->update('persons', $idNumber, $newDescription);
+
+    }
+    public function userLogs(array $idNumber, array $newDescription): void
+    {
+        $this->dbConn->insert('user_log', $newDescription);
 
     }
 

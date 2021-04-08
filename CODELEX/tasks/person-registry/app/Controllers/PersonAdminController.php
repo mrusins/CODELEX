@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Services\AdminPersonService;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class PersonAdminController
 {
@@ -18,6 +20,16 @@ class PersonAdminController
         $run = $this->service;
         $run->saveDescription();
         $run->addNewPerson();
+
+//
+//        $loader = new FilesystemLoader('templates');
+//        $twig = new Environment($loader);
+//
+//
+//        echo $twig->render('admin.twig',['users'=>$run->search()]);
+
+
+
 
         require_once __DIR__ . '/../View/admin.php';
 
