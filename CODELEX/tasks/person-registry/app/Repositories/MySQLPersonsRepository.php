@@ -15,8 +15,8 @@ class MySQLPersonsRepository implements PersonsRepository
         $pdo = new PDOConnector(
             'localhost', // server
             'maris',      // user
-            'maris1234',      // password
-            'PersonService'   // database
+            '',      // password
+            ''   // database
         );
         $pdoConn = $pdo->connect('utf8', []); // charset, options
         $this->dbConn = new Mysql($pdoConn);
@@ -36,7 +36,7 @@ WHERE name = :name OR surname = :name OR id_number = :name OR age = :name OR adr
         $this->dbConn->update('persons', $idNumber, $newDescription);
 
     }
-    public function userLogs(array $idNumber, array $newDescription): void
+    public function userLogs( array $newDescription): void
     {
         $this->dbConn->insert('user_log', $newDescription);
 
@@ -45,6 +45,12 @@ WHERE name = :name OR surname = :name OR id_number = :name OR age = :name OR adr
     public function addNewPerson(array $new): void
     {
         $this->dbConn->insert('persons', $new);
+
+    }
+    public function getLastToken(): array
+    {
+        return $this->dbConn->
+        fetchRow('SELECT token FROM user_log where id=(select max(id) from user_log);');
 
     }
 

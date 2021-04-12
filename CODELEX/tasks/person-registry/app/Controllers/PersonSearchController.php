@@ -11,29 +11,29 @@ class PersonSearchController
 {
     private SearchPersonService $service;
 
-    public function __construct(SearchPersonService $service){
-        $this->service=$service;
+    public function __construct(SearchPersonService $service)
+    {
+        $this->service = $service;
     }
 
-    public function index()
+    public function index(): void
     {
         $loader = new FilesystemLoader('templates');
         $twig = new Environment($loader);
         $run = $this->service;
         $run->search();
-        echo $twig->render('index.twig',['users'=>$run->getSearchResult(), 'authorize'=>$run->authorize()]);
-
-
+        echo $twig->render('index.twig', ['users' => $run->getSearchResult(), 'authorize' => $run->authorize()]);
     }
-    public function search()
+
+    public function search(): void
     {
         $loader = new FilesystemLoader('templates');
         $twig = new Environment($loader);
         $run = $this->service;
         $run->search();
 
-        echo $twig->render('index.twig',['users'=>$run->getSearchResult(), 'authorize'=>$run->authorize()]);
-
+        echo $twig->render('index.twig', ['users' => $run->getSearchResult(), 'authorize' => $run->authorize(),
+            'token' => $run->getToken()]);
     }
 
 
