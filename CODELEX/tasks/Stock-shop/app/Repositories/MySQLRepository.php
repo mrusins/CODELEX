@@ -17,7 +17,7 @@ class MySQLRepository implements DBRepository
         $pdo = new PDOConnector(
             'localhost', // server
             'maris',      // user
-            'maris1234',      // password
+            '',      // password
             'Stocks'   // database
         );
         $pdoConn = $pdo->connect('utf8', []); // charset, options
