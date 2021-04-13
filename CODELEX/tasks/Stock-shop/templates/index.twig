@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>STOCKS</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body class="text-gray-900 bg-gray-100">
+<div class="container mx-auto bg-gray-200 py-5 rounded-lg font-mono">
+
+    <h2 class="mr-4 text-green-500 float-right" > In wallet: {{ wallet }} USD</h2>
+    <h2 class="ml-4">STOCKS</h2>
+    <br>
+    <form class="example" method="post" action="/">
+        <input type="text" placeholder="Search.." name="search" class="ml-4 rounded">
+        <button type="submit"><i class=""></i>Search</button>
+    </form>
+    {% if search.c is defined %}
+    <h2 class="ml-4 "> Actual price for {{ stock_name}} is:  {{ search.c }}</h2>
+        <form action="/" method="get" >
+
+            <label for="fname"></label>
+            <input type="hidden"  name="stock_name" value="{{ stock_name}}">
+            <label for="lname"></label>
+            <input type="hidden"  name="actual_price" value="{{ search.c }}"><br>
+            <button type="submit" class="ml-4 bg-gray-500 rounded" formmethod="post">Add to MY STOCKS</button>
+        </form>
+    {% endif %}
+
+</div>
+<br>
+<div class="container mx-auto bg-gray-200 py-5 rounded-lg font-mono text-sm">
+    <form action="/" method="post" >
+        <label for="fname"></label>
+        <input type="hidden"  name="update_price" value="{{ stock_name}}">
+        <button type="submit" class="ml-4 bg-gray-200 rounded" formmethod="post">Update actual price</button>
+    </form> <br>
+
+    {% for user in users %}
+        {% for id in user %}
+            <h2 class="ml-4">   {{ loop.index }} - stock: <b>{{id.name}}</b>
+                actual price:
+                {% if   id.starting_price == 0 %}
+                    <b> {{ id.actual_price }}</b>
+                {% endif %}
+                {% if  id.actual_price  == id.starting_price %}
+                    <b class="text-yellow-500"> &#10145 {{ id.actual_price }}</b>
+                {% endif %}
+                {% if  id.actual_price  > id.starting_price %}
+                    <b class="text-green-500"> &#8599 {{ id.actual_price }} </b>
+                {% endif %}
+                {% if  id.actual_price  < id.starting_price and id.starting_price > 0 %}
+                    <b class="text-red-500"> &#8600 {{ id.actual_price }}</b>
+                {% endif %}
+                purchase price: <b> {{ id.starting_price }}</b>
+                total: <b>{{id.total}}</b> updated: <b>{{id.updated_at}}</b>
+                <form action="/" method="post" id="{{ id.id }}_buy">
+                    <input type="number" placeholder="Enter to buy " name="buy" class="rounded text-gray-700" >
+                    <input type="hidden" id="{{ id.id }}_buy" name="id" value="{{ id.id }}">
+                    <button type="submit" form="{{ id.id }}_buy" value="Submit">Buy</button>
+                </form> <br>
+
+                {% if checkForMoney == false %}
+                <p class="text-red-500">U dont have money enough</p>
+                {% endif %}
+
+                <form action="/" method="post" id="{{ id.id }}_sell">
+                    <input type="number" placeholder="You have {{ id.total }} to sell" id="fname" name="sell" class="rounded text-gray-700" >
+                    <input type="hidden" id="{{ id.id }}_sell" name="id" value="{{ id.id }}">
+                    <button type="submit" form="{{ id.id }}_sell" value="Submit">Sell</button>
+                </form>
+                <br> </h2>
+        {% endfor %}
+    {% endfor %}
+</div>
+<br>
+</body>
+</html>
+
+
