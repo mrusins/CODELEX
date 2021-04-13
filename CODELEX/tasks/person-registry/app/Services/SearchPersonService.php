@@ -32,6 +32,7 @@ class SearchPersonService
 
     public function authorize(): string
     {
+
         if (isset($_POST['authorize'])) {
             $this->token = bin2hex(random_bytes(16));
             $unsetTime = $_SESSION['unset'] = time() + self::SESSION_TIME;
@@ -41,6 +42,7 @@ class SearchPersonService
                 'token' => $this->token]);
 
             if (isset($result) && $this->token == $this->personRepository->getLastToken()['token']) {
+
                 $this->loginName = $this->personRepository->searchByNameSurname($_POST['authorize'])[0]['name'];
                 $id = $this->personRepository->searchByNameSurname($_POST['authorize'])[0]['id'];
                 $_SESSION['name'] = $this->loginName;
@@ -49,6 +51,7 @@ class SearchPersonService
                 $unsetTime = $_SESSION['unset'] = time() + self::SESSION_TIME;
                 $this->personRepository->userLogs(['unset_time' => $unsetTime, 'user_id' => $id,
                     'token' => $token]);
+                $this->validateLogIn = true;
             }
         }
         if (isset($_SESSION['name'])) {
@@ -56,9 +59,18 @@ class SearchPersonService
         }
         return false;
     }
-    public function getToken():string{
+
+    public function getToken(): string
+    {
         return $this->personRepository->getLastToken()['token'];
+
     }
 
-
+    public function isTokenInGet(): string
+    {
+        if (isset($_GET['token'])) {
+            return $_GET['token'];
+        }
+        return false;
+    }
 }

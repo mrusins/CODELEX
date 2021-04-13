@@ -16,15 +16,6 @@ class PersonSearchController
         $this->service = $service;
     }
 
-    public function index(): void
-    {
-        $loader = new FilesystemLoader('templates');
-        $twig = new Environment($loader);
-        $run = $this->service;
-        $run->search();
-        echo $twig->render('index.twig', ['users' => $run->getSearchResult(), 'authorize' => $run->authorize()]);
-    }
-
     public function search(): void
     {
         $loader = new FilesystemLoader('templates');
@@ -33,7 +24,7 @@ class PersonSearchController
         $run->search();
 
         echo $twig->render('index.twig', ['users' => $run->getSearchResult(), 'authorize' => $run->authorize(),
-            'token' => $run->getToken()]);
+            'token' => $run->getToken(), 'getToken' => $run->isTokenInGet()]);
     }
 
 

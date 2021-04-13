@@ -10,18 +10,15 @@ use App\Repositories\PersonsRepository;
 use App\Services\AdminPersonService;
 use App\Services\SearchPersonService;
 
-$log= new LoginRepository();
+$log = new LoginRepository();
 session_start();
-if (isset($_SESSION['id'])){
-    if( time() > $log->getUserLog($_SESSION['id'])['unset_time']){
+if (isset($_SESSION['id'])) {
+    if (time() > $log->getUserLog($_SESSION['id'])['unset_time']) {
         session_unset();
     }
 }
 
-
-
 $container = new League\Container\Container;
-
 $container->add(PersonsRepository::class, MySQLPersonsRepository::class);
 
 $container->add(PersonAdminController::class, PersonAdminController::class)->
@@ -37,10 +34,17 @@ addArgument(PersonsRepository::class);
 $container->add(TestController::class, TestController::class)->
 addArgument(SearchPersonService::class);
 
+
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/', [PersonSearchController::class, 'index']);
-    $r->addRoute(['GET', 'POST'], '/admin', [PersonAdminController::class, 'index']);
+    $getToken = new MySQLPersonsRepository();
+    $token = $getToken->getLastToken()['token'];
+
+    $r->addRoute('GET', "/?token=$token", [PersonSearchController::class, 'search']);
+    $r->addRoute('POST', "/?token=$token", [PersonSearchController::class, 'search']);
+    $r->addRoute('GET', '/', [PersonSearchController::class, 'search']);
     $r->addRoute('POST', '/', [PersonSearchController::class, 'search']);
+    $r->addRoute('GET', '/admin', [PersonAdminController::class, 'index']);
+    $r->addRoute('POST', '/admin', [PersonAdminController::class, 'index']);
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
