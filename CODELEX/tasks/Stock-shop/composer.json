@@ -12,7 +12,8 @@
         "phpunit/phpunit": "^9.5",
         "simplon/mysql": "^2.2",
         "league/container": "^3.3",
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.0",
+        "doctrine/cache": "^1.10"
     },
     "autoload": {
         "psr-4": {

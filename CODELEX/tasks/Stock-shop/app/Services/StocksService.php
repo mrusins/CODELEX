@@ -7,6 +7,8 @@ use App\Model\Stock;
 use App\Model\Wallet;
 use App\Repositories\DBRepository;
 use App\Repositories\StocksAPIRepository;
+use DateTime;
+use DateTimeZone;
 
 class StocksService
 {
@@ -50,60 +52,12 @@ class StocksService
 
     }
 
-    public function buyStocks(int $id, int $count): void
-    {
-        $moneyInWallet = $this->DBRepository->getLastFromWallet()['total'];
-        $buy = null;
-        $sell = null;
-        $totalAfterBuy = 0;
-        $actualPrice = 0;
-        foreach ($this->items as $item) {
-            if ($item['id'] == $id) {
-                $totalAfterBuy = $count + $item['total'];
-                $wallet = new Wallet($item['actual_price'], null);
-                $buy = $wallet->buy() * $count;
-                $sell = $wallet->sell() * $count;
-                $item['starting_price'] > $moneyInWallet ? $this->isMoneyEnough = false : false;
-
-                $moneyInWallet = $moneyInWallet - $buy;
-                $actualPrice = $item['actual_price'];
-            }
-        }
-        $this->isMoneyEnough == true ? $this->DBRepository->buyStocks(['id' => $id], //TODO
-            ['starting_price' => $actualPrice, 'total' => $totalAfterBuy], ['total' => $moneyInWallet, 'buy' => $buy, 'sell' => $sell]) : false;
-
-    }
-
-    public function sellStocks(int $id, int $count): void  //TODO total minus sell
-    {
-        $moneyInWallet = $this->DBRepository->getLastFromWallet()['total'];
-        $buy = null;
-        $sell = null;
-        $totalAfterSell = 0;
-        foreach ($this->items as $item) {
-            if ($item['id'] == $id) {
-                $totalAfterSell = $item['total'] - $count;
-                $wallet = new Wallet(null, $item['starting_price']);
-                $buy = $wallet->buy() * $count;
-                $sell = $wallet->sell() * $count;
-                $moneyInWallet = $moneyInWallet + $sell;
-                $item['total'] + $count <= 0 ? $this->isMyStocksEnoughToSell = false : true;
-
-            }
-        }
-        $this->isMyStocksEnoughToSell == true ? $this->DBRepository->sellStocks(['id' => $id], ['total' => $totalAfterSell],
-            ['total' => $moneyInWallet, 'buy' => $buy, 'sell' => $sell]) : false;
-    }
 
     public function isMoneyEnoughToBuy(): bool
     {
         return $this->isMoneyEnough;
     }
 
-    public function isStocksEnoughToSell(): bool
-    {
-        return $this->isMyStocksEnoughToSell;
-    }
 
     public function moneyInWallet(): float
     {
@@ -114,13 +68,15 @@ class StocksService
     {
         $api = new StocksAPIRepository();
 
+
         foreach ($this->searchResults as $stocks) {
             foreach ($stocks as $stock) {
                 $price = $api->searchStock($stock['name']);
-                array_push($this->actualPricesForAllStocks, [$stock['id'] => $price['c']]); //TODO dzest
+                array_push($this->actualPricesForAllStocks, [$stock['id'] => $price['c']]);
                 $this->DBRepository->updatePrice(['id' => $stock['id']], ['actual_price' => $price['c']]);
             }
         }
+        $api->cache(); //TODO
 
         return $this->actualPricesForAllStocks;
 

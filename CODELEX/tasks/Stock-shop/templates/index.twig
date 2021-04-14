@@ -54,7 +54,7 @@
                     <b class="text-red-500"> &#8600 {{ id.actual_price }}</b>
                 {% endif %}
                 purchase price: <b> {{ id.starting_price }}</b>
-                total: <b>{{id.total}}</b> updated: <b>{{id.updated_at}}</b>
+                total: <b>{{id.total}}</b> purchase time: <b>{{id.created_at}}</b>
                 <form action="/" method="post" id="{{ id.id }}_buy">
                     <input type="number" placeholder="Enter to buy " name="buy" class="rounded text-gray-700" >
                     <input type="hidden" id="{{ id.id }}_buy" name="id" value="{{ id.id }}">
