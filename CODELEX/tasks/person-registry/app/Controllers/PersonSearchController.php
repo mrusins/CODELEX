@@ -23,7 +23,7 @@ class PersonSearchController
         $run = $this->service;
         $run->search();
 
-        echo $twig->render('index.twig', ['users' => $run->getSearchResult(), 'authorize' => $run->authorize(),
+        echo $twig->render('login.twig', ['users' => $run->getSearchResult(), 'authorize' => $run->authorize(),
             'token' => $run->getToken(), 'getToken' => $run->isTokenInGet()]);
     }
 

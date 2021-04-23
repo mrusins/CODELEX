@@ -10,7 +10,7 @@ class StocksAPIRepository
 {
 
 
-    private string $token =''; //TODO add your private token
+    private string $token ='c1mnur237fkpnsp61f6g'; //TODO add your private token
     private MySQLPersonsRepository $sql;
 
     private array $temp=[];
@@ -30,7 +30,7 @@ class StocksAPIRepository
 
         $json = file_get_contents($url);
         $data = json_decode($json, TRUE);
-        $this->temp = $data;
+        $this->temp = [$data];
         return $data;
     }
 

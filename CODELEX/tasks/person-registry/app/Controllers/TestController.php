@@ -23,6 +23,6 @@ class TestController
         $run = $this->service;
         $run->search();
 
-        echo $twig->render('index.twig',['users'=>$run->getSearchResult()]);
+        echo $twig->render('login.twig',['users'=>$run->getSearchResult()]);
     }
 }
