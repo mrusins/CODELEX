@@ -1,4 +1,4 @@
 # macOS Files
 .DS_Store
 vendor/
-public/pictures
+public/pictures/
